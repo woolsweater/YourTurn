@@ -13,6 +13,7 @@
 		03ECDF891FC8DAB000322FDC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03ECDF871FC8DAB000322FDC /* LaunchScreen.storyboard */; };
 		03ECDF941FC8DAB000322FDC /* YourTurnTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03ECDF931FC8DAB000322FDC /* YourTurnTests.swift */; };
 		03ECDF9F1FC8E1B100322FDC /* PlayerSwitchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03ECDF9E1FC8E1B100322FDC /* PlayerSwitchViewController.swift */; };
+		03ECDFA11FC8E1FD00322FDC /* CountdownButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03ECDFA01FC8E1FD00322FDC /* CountdownButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +37,7 @@
 		03ECDF931FC8DAB000322FDC /* YourTurnTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YourTurnTests.swift; sourceTree = "<group>"; };
 		03ECDF951FC8DAB000322FDC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		03ECDF9E1FC8E1B100322FDC /* PlayerSwitchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerSwitchViewController.swift; sourceTree = "<group>"; };
+		03ECDFA01FC8E1FD00322FDC /* CountdownButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +82,7 @@
 				03ECDF7E1FC8DAB000322FDC /* AppDelegate.swift */,
 				03ECDF821FC8DAB000322FDC /* Main.storyboard */,
 				03ECDF9E1FC8E1B100322FDC /* PlayerSwitchViewController.swift */,
+				03ECDFA01FC8E1FD00322FDC /* CountdownButton.swift */,
 				03ECDF851FC8DAB000322FDC /* Assets.xcassets */,
 				03ECDF871FC8DAB000322FDC /* LaunchScreen.storyboard */,
 				03ECDF8A1FC8DAB000322FDC /* Info.plist */,
@@ -201,6 +204,7 @@
 			files = (
 				03ECDF9F1FC8E1B100322FDC /* PlayerSwitchViewController.swift in Sources */,
 				03ECDF7F1FC8DAB000322FDC /* AppDelegate.swift in Sources */,
+				03ECDFA11FC8E1FD00322FDC /* CountdownButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
