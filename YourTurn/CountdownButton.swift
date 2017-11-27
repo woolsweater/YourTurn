@@ -5,6 +5,17 @@ import UIKit
  */
 class CountdownButton : UIView
 {
+    var text : String? = nil
+    {
+        didSet {
+            self.label.text = self.text
+        }
+    }
+    
+    var countdownText : String? = nil
+    
+    private let label : UILabel
+    
     private let ticker : CALayer
     
     private var shrinker : AnyIterator<CATransform3D>? = nil
@@ -13,24 +24,36 @@ class CountdownButton : UIView
 
     override init(frame: CGRect)
     {
+        self.label = UILabel()
         self.ticker = CALayer()
         super.init(frame: frame)
         self.addGestureRecognizer(UITapGestureRecognizer(didRecognize: self.tap))
         self.backgroundColor = .darkGray
+        self.constrainLabel()
         self.configureTicker()
     }
 
     required init?(coder _: NSCoder) {
         fatalError()
     }
-
+    
+    private func constrainLabel()
+    {
+        self.label.translatesAutoresizingMaskIntoConstraints = false
+        self.addSubview(self.label)
+        NSLayoutConstraint.activate([
+            self.label.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            self.label.centerYAnchor.constraint(equalTo: self.centerYAnchor)
+        ])
+    }
+    
     private func configureTicker()
     {
         self.ticker.frame = CGRect(origin: self.bounds.origin,
                                      size: self.bounds.size)
         self.ticker.backgroundColor = UIColor.red.cgColor
         self.ticker.opacity = 0.0
-        self.layer.addSublayer(self.ticker)
+        self.layer.insertSublayer(self.ticker, at: 0)
     }
 
     @objc private func tap(recognizer: UIGestureRecognizer)
@@ -46,6 +69,9 @@ class CountdownButton : UIView
     private func beginCountdown()
     {
         self.isCountingDown = true
+        if let countdownText = self.countdownText {
+            self.label.text = countdownText
+        }
         let steps = 5
         self.shrinker = CATransform3D.horizontalShrinker(steps: steps)
         self.ticker.opacity = 1.0
@@ -74,9 +100,10 @@ class CountdownButton : UIView
     private func resetCountdown()
     {
         self.isCountingDown = false
-        self.ticker.transform = .identity
+        self.label.text = self.text
         self.shrinker = nil
         self.ticker.opacity = 0.0
+        self.ticker.transform = .identity
     }
 }
 
