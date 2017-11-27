@@ -14,6 +14,8 @@
 		03ECDF941FC8DAB000322FDC /* YourTurnTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03ECDF931FC8DAB000322FDC /* YourTurnTests.swift */; };
 		03ECDF9F1FC8E1B100322FDC /* PlayerSwitchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03ECDF9E1FC8E1B100322FDC /* PlayerSwitchViewController.swift */; };
 		03ECDFA11FC8E1FD00322FDC /* CountdownButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03ECDFA01FC8E1FD00322FDC /* CountdownButton.swift */; };
+		03ECDFA41FCB91AB00322FDC /* UIGestureRecognizer+SimpleCallback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03ECDFA31FCB91AB00322FDC /* UIGestureRecognizer+SimpleCallback.swift */; };
+		03ECDFA61FCB926500322FDC /* CoreAnimation+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03ECDFA51FCB926500322FDC /* CoreAnimation+Convenience.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +40,8 @@
 		03ECDF951FC8DAB000322FDC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		03ECDF9E1FC8E1B100322FDC /* PlayerSwitchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerSwitchViewController.swift; sourceTree = "<group>"; };
 		03ECDFA01FC8E1FD00322FDC /* CountdownButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownButton.swift; sourceTree = "<group>"; };
+		03ECDFA31FCB91AB00322FDC /* UIGestureRecognizer+SimpleCallback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIGestureRecognizer+SimpleCallback.swift"; sourceTree = "<group>"; };
+		03ECDFA51FCB926500322FDC /* CoreAnimation+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreAnimation+Convenience.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +83,7 @@
 		03ECDF7D1FC8DAB000322FDC /* YourTurn */ = {
 			isa = PBXGroup;
 			children = (
+				03ECDFA21FCB915400322FDC /* Utility */,
 				03ECDF7E1FC8DAB000322FDC /* AppDelegate.swift */,
 				03ECDF821FC8DAB000322FDC /* Main.storyboard */,
 				03ECDF9E1FC8E1B100322FDC /* PlayerSwitchViewController.swift */,
@@ -97,6 +102,15 @@
 				03ECDF951FC8DAB000322FDC /* Info.plist */,
 			);
 			path = YourTurnTests;
+			sourceTree = "<group>";
+		};
+		03ECDFA21FCB915400322FDC /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				03ECDFA31FCB91AB00322FDC /* UIGestureRecognizer+SimpleCallback.swift */,
+				03ECDFA51FCB926500322FDC /* CoreAnimation+Convenience.swift */,
+			);
+			path = Utility;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -203,7 +217,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				03ECDF9F1FC8E1B100322FDC /* PlayerSwitchViewController.swift in Sources */,
+				03ECDFA61FCB926500322FDC /* CoreAnimation+Convenience.swift in Sources */,
 				03ECDF7F1FC8DAB000322FDC /* AppDelegate.swift in Sources */,
+				03ECDFA41FCB91AB00322FDC /* UIGestureRecognizer+SimpleCallback.swift in Sources */,
 				03ECDFA11FC8E1FD00322FDC /* CountdownButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
