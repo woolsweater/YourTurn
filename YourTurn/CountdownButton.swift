@@ -22,9 +22,7 @@ class CountdownButton : UIView
     /** The text that should be displayed in the label when the button is idle. */
     var text : String? = nil
     {
-        didSet {
-            self.label.text = self.text
-        }
+        didSet { self.label.text = self.text }
     }
 
     /**
@@ -56,8 +54,16 @@ class CountdownButton : UIView
 
     private let label : UILabel
 
-    private let ticker : CALayer
+    /**
+     * The visual representation of the countdown, a bar in `countdownColor`, that
+     * shrinks over the duration.
+     */
+    private let tickerBar : CALayer
 
+    /**
+     * A progression of transforms that shrink the bar down to nothing over
+     * `duration` steps.
+     */
     private var shrinker : AnyIterator<CATransform3D>? = nil
 
     private var isCountingDown : Bool = false
@@ -67,7 +73,7 @@ class CountdownButton : UIView
     override init(frame: CGRect)
     {
         self.label = UILabel()
-        self.ticker = CALayer()
+        self.tickerBar = CALayer()
         super.init(frame: frame)
         self.tapRecognizer = UITapGestureRecognizer(didRecognize: self.tap)
         self.configureGestureRecognizer()
@@ -102,11 +108,11 @@ class CountdownButton : UIView
 
     private func configureTicker()
     {
-        self.ticker.frame = CGRect(origin: self.bounds.origin,
+        self.tickerBar.frame = CGRect(origin: self.bounds.origin,
                                      size: self.bounds.size)
-        self.ticker.backgroundColor = self.countdownColor.cgColor
-        self.ticker.opacity = 0.0
-        self.layer.insertSublayer(self.ticker, at: 0)
+        self.tickerBar.backgroundColor = self.countdownColor.cgColor
+        self.tickerBar.opacity = 0.0
+        self.layer.insertSublayer(self.tickerBar, at: 0)
     }
 
     @objc private func tap(recognizer: UIGestureRecognizer)
@@ -126,8 +132,8 @@ class CountdownButton : UIView
         self.isCountingDown = false
         self.label.text = self.text
         self.shrinker = nil
-        self.ticker.opacity = 0.0
-        self.ticker.transform = .identity
+        self.tickerBar.opacity = 0.0
+        self.tickerBar.transform = .identity
     }
 
     private func beginCountdown()
@@ -138,10 +144,15 @@ class CountdownButton : UIView
         }
         let steps = self.duration
         self.shrinker = CATransform3D.horizontalShrinker(steps: steps)
-        self.ticker.opacity = 1.0
+        self.tickerBar.opacity = 1.0
         self.countDown(from: steps)
     }
 
+    /**
+     * Create and run the countdown animations, recursing until `index` is 0.
+     * Each step shrinks the "ticker" bar another size. If the countdown reaches
+     * its end, the observer is notified.
+     */
     private func countDown(from index: Int)
     {
         guard self.isCountingDown, index > 0 else {
@@ -149,31 +160,35 @@ class CountdownButton : UIView
             self.observer?.countdownDidComplete(self)
             return
         }
-        CATransaction.setAnimationDuration(Animation.shrinkingDuration)
-        CATransaction.setAnimationTimingFunction(.easeIn)
-        CATransaction.setCompletionBlock({
-            guard let nextTransform = self.shrinker?.next() else { return }
-            CATransaction.setAnimationDuration(Animation.expandingDuration)
-            CATransaction.setCompletionBlock({
-                self.countDown(from: index - 1)
-            })
-            self.ticker.transform = nextTransform
-        })
-        self.ticker.transform = .horizontalScaleZero
+        let shrink = CATransaction.Animation(
+            duration: AnimateDuration.shrinking,
+            timingFunction: .easeIn,
+            action: { self.tickerBar.transform = .horizontalScaleZero }
+        )
+        shrink.chainAnimation(
+            duration: AnimateDuration.expanding,
+            action: {
+                guard let nextTransform = self.shrinker?.next() else { return }
+                self.tickerBar.transform = nextTransform
+            },
+            completion: { self.countDown(from: index - 1) }
+        )
+
+        CATransaction.animate(shrink)
     }
 }
 
 //MARK:- Constants
 extension CountdownButton
 {
-    fileprivate struct Animation
+    fileprivate struct AnimateDuration
     {
         /** The length of time that the countdown bar should spend shrinking. */
-        static let shrinkingDuration : CFTimeInterval = 0.95
+        static let shrinking : CFTimeInterval = 0.95
         /** The length of time that the countdown bar should spend expanding. */
-        static var expandingDuration : CFTimeInterval
+        static var expanding : CFTimeInterval
         {
-            return 1.0 - self.shrinkingDuration
+            return 1.0 - self.shrinking
         }
     }
 }

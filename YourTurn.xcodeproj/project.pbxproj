@@ -16,6 +16,7 @@
 		03ECDFA11FC8E1FD00322FDC /* CountdownButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03ECDFA01FC8E1FD00322FDC /* CountdownButton.swift */; };
 		03ECDFA41FCB91AB00322FDC /* UIGestureRecognizer+SimpleCallback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03ECDFA31FCB91AB00322FDC /* UIGestureRecognizer+SimpleCallback.swift */; };
 		03ECDFA61FCB926500322FDC /* CoreAnimation+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03ECDFA51FCB926500322FDC /* CoreAnimation+Convenience.swift */; };
+		03ECDFA81FCBBB8000322FDC /* CATransaction+Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03ECDFA71FCBBB8000322FDC /* CATransaction+Animation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +43,7 @@
 		03ECDFA01FC8E1FD00322FDC /* CountdownButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownButton.swift; sourceTree = "<group>"; };
 		03ECDFA31FCB91AB00322FDC /* UIGestureRecognizer+SimpleCallback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIGestureRecognizer+SimpleCallback.swift"; sourceTree = "<group>"; };
 		03ECDFA51FCB926500322FDC /* CoreAnimation+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreAnimation+Convenience.swift"; sourceTree = "<group>"; };
+		03ECDFA71FCBBB8000322FDC /* CATransaction+Animation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CATransaction+Animation.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +111,7 @@
 			children = (
 				03ECDFA31FCB91AB00322FDC /* UIGestureRecognizer+SimpleCallback.swift */,
 				03ECDFA51FCB926500322FDC /* CoreAnimation+Convenience.swift */,
+				03ECDFA71FCBBB8000322FDC /* CATransaction+Animation.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -218,6 +221,7 @@
 			files = (
 				03ECDF9F1FC8E1B100322FDC /* PlayerSwitchViewController.swift in Sources */,
 				03ECDFA61FCB926500322FDC /* CoreAnimation+Convenience.swift in Sources */,
+				03ECDFA81FCBBB8000322FDC /* CATransaction+Animation.swift in Sources */,
 				03ECDF7F1FC8DAB000322FDC /* AppDelegate.swift in Sources */,
 				03ECDFA41FCB91AB00322FDC /* UIGestureRecognizer+SimpleCallback.swift in Sources */,
 				03ECDFA11FC8E1FD00322FDC /* CountdownButton.swift in Sources */,
